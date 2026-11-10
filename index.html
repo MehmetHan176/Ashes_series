@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#101513" />
+  <title>Ashes of the Forgotten</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="world" aria-label="Ashes of the Forgotten game world"></canvas>
+    <div class="vignette"></div><div class="grain"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><div><b>ASHES</b><small>OF THE FORGOTTEN</small></div></div>
+      <div class="location"><span class="pin">⌖</span><span id="region">THE ASHEN MARCHES</span><i></i><span id="weather-label">MIST · DUSK</span></div>
+      <button id="menu-button" class="icon-button" aria-label="Open journal">☰</button>
+    </header>
+    <section class="quest-card"><div class="eyebrow">CURRENT THREAD</div><div id="quest-title">The Bell Beneath the Ash</div><p id="quest-objective">Find Maelin at the village well.</p><div class="quest-rule"><span></span></div></section>
+    <div class="compass"><div class="compass-ring"><span class="north">N</span><span class="needle">⌃</span><span class="compass-dot">•</span></div><div id="compass-label">OLD VILLAGE</div></div>
+    <section class="player-hud">
+      <div class="portrait"><span>✦</span><small>LV <b id="level">01</b></small></div>
+      <div class="bars"><div class="bar-row health"><span>VIGOR</span><div class="bar"><i id="health-fill"></i></div><b id="health-value">100</b></div><div class="bar-row stamina"><span>STAMINA</span><div class="bar"><i id="stamina-fill"></i></div></div><div class="bar-row xp"><span>RENOWN</span><div class="bar"><i id="xp-fill"></i></div></div></div>
+      <button id="inventory-button" class="inventory-button"><span>▤</span><small>PACK</small><kbd>I</kbd></button>
+    </section>
+    <section class="hotbar"><div class="hot-slot active"><kbd>1</kbd><span>⚔</span><small>IRON OATH</small></div><div class="hot-slot"><kbd>2</kbd><span>◈</span><small>ASH TONIC <b id="tonic-count">2</b></small></div><div class="hot-slot"><kbd>3</kbd><span>◉</span><small>WARD SIGIL</small></div></section>
+    <div id="interaction-hint" class="interaction-hint"></div>
+    <div id="toast" class="toast"></div>
+    <div id="combat-flash" class="combat-flash"></div>
+    <div id="damage-number-layer"></div>
+    <div class="controls"><span><kbd>W A S D</kbd> MOVE</span><span><kbd>SHIFT</kbd> SPRINT</span><span><kbd>SPACE</kbd> DODGE</span><span><kbd>F</kbd> STRIKE</span><span><kbd>R</kbd> HEAVY</span><span><kbd>Q</kbd> GUARD</span><span><kbd>E</kbd> INTERACT</span></div>
+    <div id="dialogue" class="modal hidden"><div class="dialogue-panel"><div class="panel-kicker">A VOICE IN THE ASH</div><button class="close-modal" data-close>×</button><h2 id="speaker-name">Maelin Voss</h2><p id="speaker-mood">Village keeper · wary, but kind</p><div class="dialogue-rule"></div><div id="dialogue-text"></div><div id="dialogue-options" class="dialogue-options"></div></div></div>
+    <div id="inventory" class="modal hidden"><div class="journal-panel"><button class="close-modal" data-close>×</button><div class="panel-kicker">FIELD JOURNAL · 17TH DAY OF THE WITHERING</div><h2>What the ash remembers</h2><div class="journal-tabs"><button class="tab active" data-tab="pack">Pack</button><button class="tab" data-tab="quests">Quests</button><button class="tab" data-tab="people">People</button></div><div id="journal-content"></div></div></div>
+    <div id="choice-modal" class="modal hidden"><div class="dialogue-panel choice-panel"><div class="panel-kicker">THE WEIGHT OF A CHOICE</div><h2 id="choice-heading">A price in blood</h2><p id="choice-copy"></p><div id="choice-options" class="dialogue-options"></div></div></div>
+    <div id="death-screen" class="modal hidden"><div class="death-panel"><div class="panel-kicker">THE ASHES TAKE YOU</div><h2>Not yet forgotten.</h2><p>The old road remembers the living.</p><button id="respawn">RETURN TO THE CROSSROADS</button></div></div>
+    <div id="start-screen" class="start-screen"><div class="start-content"><div class="start-symbol">✦</div><div class="panel-kicker">A DARK FANTASY TALE</div><h1>ASHES <em>OF THE</em><br>FORGOTTEN</h1><p>When the bell tolls beneath the earth, the dead remember their names.</p><button id="begin">ENTER THE MARCHES <span>→</span></button><div class="start-note">WASD TO WALK &nbsp;·&nbsp; E TO LISTEN &nbsp;·&nbsp; F TO FIGHT</div></div><div class="start-credit">A SMALL WORLD WITH A LONG MEMORY</div></div>
+  </main>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
